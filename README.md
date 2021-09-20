@@ -4,6 +4,8 @@ This code accompanies the submission:
 ["Bodies Uncovered: Learning to Manipulate Real Blankets Around People via Physics Simulations"](https://arxiv.org/abs/2109.04930)  
 Kavya Puthuveetil, Charles C. Kemp, and Zackory Erickson
 
+This repository provides a version of [Assistive Gym](https://github.com/Healthcare-Robotics/assistive-gym) modified for this work, as well as additional task-specific functionality. **Although files for other assistive environments are included, ONLY the Bedding Manipulation enviornment is functional!**
+
 ## Citation
 K. Puthuveetil, C. C. Kemp, and Z. Erickson, “Bodies Uncovered: Learning to Manipulate Real Blankets Around People via Physics Simulations,” 2021.
 ```
@@ -16,6 +18,12 @@ K. Puthuveetil, C. C. Kemp, and Z. Erickson, “Bodies Uncovered: Learning to Ma
       primaryClass={cs.RO}
 }
 ```
+## Install
+For more detail, check out the [installation guide for Assistive Gym](https://github.com/Healthcare-Robotics/assistive-gym/wiki/1.-Install). Just replace all lines that say `git clone https://github.com/Healthcare-Robotics/assistive-gym.git` with:
+```
+git clone https://github.com/RCHI-Lab/bodies-uncovered.git 
+```
+Generating the actuated human model in the Bedding Manipulation environment relies on SMPL-X human mesh models. In order to use these models, you will need to create an account at https://smpl-x.is.tue.mpg.de/index.html and [download](https://smpl-x.is.tue.mpg.de/download.php) the mesh models. Once downloaded, extract the file and move the entire `smplx` directory to `bodies-uncovered/assistive_gym/envs/assets/smpl_models/`. Once complete, you should have several files with this format: `bodies-uncovered/assistive_gym/envs/assets/smpl_models/smplx/SMPLX_FEMALE.npz`. This step is REQUIRED to run the Bedding Manipulation enviornment!
 
 ## Basics
 The Bedding Manipulation environment, built in [Assistive Gym](https://github.com/Healthcare-Robotics/assistive-gym), can be visualized using the following command:
