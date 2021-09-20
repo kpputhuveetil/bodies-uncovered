@@ -4,8 +4,21 @@ This code accompanies the submission:
 ["Bodies Uncovered: Learning to Manipulate Real Blankets Around People via Physics Simulations"](https://arxiv.org/abs/2109.04930)  
 Kavya Puthuveetil, Charles C. Kemp, and Zackory Erickson
 
+## Citation
+K. Puthuveetil, C. C. Kemp, and Z. Erickson, “Bodies Uncovered: Learning to Manipulate Real Blankets Around People via Physics Simulations,” 2021.
+```
+@misc{puthuveetil2021bodies,
+      title={Bodies Uncovered: Learning to Manipulate Real Blankets Around People via Physics Simulations}, 
+      author={Kavya Puthuveetil and Charles C. Kemp and Zackory Erickson},
+      year={2021},
+      eprint={2109.04930},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO}
+}
+```
+
 ## Basics
-The Bedding Manipulation enviornment, built in [Assistive Gym](https://github.com/Healthcare-Robotics/assistive-gym), can be visualized using the following command:
+The Bedding Manipulation environment, built in [Assistive Gym](https://github.com/Healthcare-Robotics/assistive-gym), can be visualized using the following command:
 ```
 python3 -m assistive_gym --env "BeddingManipulationSphere-v1" --target-limb-code [VALUE] --[OPTIONAL FLAGS]
 ```
@@ -21,7 +34,7 @@ python3 -m assistive_gym --env "BeddingManipulationSphere-v1" --target-limb-code
 | 4                | Right Lower Leg | | 10               | Left Lower Leg | | random           | Rand Select 1-15 |
 | 5                | Right Leg       | | 11               | Left Leg       |
 
-By default, the Bedding Manipulation enviornment is configured such that the human body and inital blanket position size is fixed, body pose is varied, and body points are not rendered. You can add the following optional flags to the command above to modify the default configuration or to explore additional functionality:
+By default, the Bedding Manipulation environment is configured such that the human body and inital blanket position size is fixed, body pose is varied, and body points are not rendered. You can add the following optional flags to the command above to modify the default configuration or to explore additional functionality:
 
 | Optional Flag          | Description                                                                                                     |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -32,15 +45,15 @@ By default, the Bedding Manipulation enviornment is configured such that the hum
 | `--verbose`            | More verbose prints.                                                                                            |
 | `--take-images`        | Take images at various critial points during a simulation rollout.                                              |
 | `--save-image-dir`     | Specify directory to save images to if the `--take-images` is selected. Flag followed by path to the directory. |
-| `--cmaes-data-collect` | Sets up the enviornment to collect data via CMA-ES.                                                             |
+| `--cmaes-data-collect` | Sets up the environment to collect data via CMA-ES.                                                             |
 
 
 
 
 
 ## Examples
-### Test Out the Bedding Manipulation Enviornment
-Let's test out the Bedding Manipulation enviornment! Here, the sphere manipulator will move to grasp and release points predefined in [`env_viewer.py`](https://github.com/Zackory/assistive-gym-fem/blob/33b88e14679935299042545b807b44e8dc2d43f5/assistive_gym/env_viewer.py#L28) to uncover a random target body part.
+### Test Out the Bedding Manipulation 
+Let's test out the Bedding Manipulation environment! Here, the sphere manipulator will move to grasp and release points predefined in [`env_viewer.py`](https://github.com/Zackory/assistive-gym-fem/blob/33b88e14679935299042545b807b44e8dc2d43f5/assistive_gym/env_viewer.py#L28) to uncover a random target body part.
 ```
 python3 -m assistive_gym --env "BeddingManipulationSphere-v1" --target-limb-code random --render-body-points --verbose
 ```
@@ -70,7 +83,7 @@ python3 -m assistive_gym.learn --env "BeddingManipulationSphere-v1" --target-lim
 ```
 python3 -m assistive_gym.learn --env "BeddingManipulationSphere-v1" --target-limb-code 4 --algo ppo --evaluate --eval-episodes 100 --seed 0 --verbose --load-policy-path ./trained_models/ppo_tl4_5k
 ```
-**Generalize**: In order to assess how well the trained policies generalize to scenarios outside the training distribution, we evaluate the policies with changes in the simulation enviornment. For example, we evaluate the policy over 100 rollouts when the inital blanket configuration is changed.
+**Generalize**: In order to assess how well the trained policies generalize to scenarios outside the training distribution, we evaluate the policies with changes in the simulation enviornment. For example, we evaluate the policy over 100 rollouts when the inital blanket configuration is randomized.
 ```
 python3 -m assistive_gym.learn --env "BeddingManipulationSphere-v1" --target-limb-code 4 --algo ppo --evaluate --eval-episodes 100 --seed 0 --verbose --load-policy-path ./trained_models/ppo_tl4_5k --vary-blanket-pose
 ```
